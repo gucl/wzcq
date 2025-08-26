@@ -1,0 +1,1074 @@
+/* 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* 游戏头部 */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ffd700;
+}
+
+.game-header h1 {
+    font-size: 2.5em;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+}
+
+.game-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#current-time {
+    color: #add8e6;
+    font-weight: bold;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: 2px solid #c0392b;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(238, 90, 36, 0.4);
+}
+
+.btn-save {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: white;
+    border: 2px solid #229954;
+}
+
+.btn-save:hover {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    transform: translateY(-2px);
+}
+
+.btn-action {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: 2px solid #1f618d;
+    margin: 5px;
+    min-width: 120px;
+}
+
+.btn-action:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db);
+    transform: translateY(-2px);
+}
+
+.btn-battle {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    border: 2px solid #922b21;
+    margin: 5px;
+    min-width: 100px;
+}
+
+.btn-battle:hover {
+    background: linear-gradient(45deg, #c0392b, #e74c3c);
+    transform: translateY(-2px);
+}
+
+/* 屏幕和面板 */
+.screen {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 30px;
+    border: 3px solid #ffd700;
+    backdrop-filter: blur(10px);
+}
+
+/* 角色创建界面 */
+#character-creation {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#character-creation h2 {
+    color: #ffd700;
+    margin-bottom: 30px;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.creation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.creation-form label {
+    font-weight: bold;
+    color: #add8e6;
+    font-size: 1.1em;
+}
+
+.creation-form input,
+.creation-form select {
+    padding: 12px;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 1em;
+    width: 300px;
+}
+
+.creation-form input:focus,
+.creation-form select:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.class-info {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid #ffd700;
+}
+
+.class-desc h4 {
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.class-desc p {
+    margin: 5px 0;
+    color: #add8e6;
+    line-height: 1.5;
+}
+
+/* 主游戏界面 */
+#main-game {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    gap: 20px;
+    height: calc(100vh - 200px);
+}
+
+/* 角色面板 */
+.character-panel {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #ffd700;
+    height: fit-content;
+}
+
+.char-info h3 {
+    color: #ffd700;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.char-class {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: #add8e6;
+}
+
+.char-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 状态条 */
+.stat-bar {
+    margin-bottom: 15px;
+}
+
+.stat-bar label {
+    display: block;
+    color: #add8e6;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.bar {
+    width: 100%;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    border: 2px solid #555;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.hp-bar .bar-fill {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.mp-bar .bar-fill {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.exp-bar .bar-fill {
+    background: linear-gradient(45deg, #f1c40f, #f39c12);
+}
+
+.bar span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-size: 0.9em;
+    z-index: 2;
+}
+
+.detailed-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    color: #add8e6;
+    font-size: 0.95em;
+}
+
+.detailed-stats div {
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    border: 1px solid #555;
+}
+
+/* 游戏内容区 */
+.game-content {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 导航菜单 */
+.game-nav {
+    display: flex;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid #ffd700;
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: #add8e6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-right: 1px solid #555;
+    font-weight: bold;
+}
+
+.nav-btn:last-child {
+    border-right: none;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+}
+
+.nav-btn.active {
+    background: rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    border-bottom: 3px solid #ffd700;
+}
+
+/* 内容面板 */
+.content-panel {
+    padding: 20px;
+    flex: 1;
+    overflow-y: visible;
+    max-height: none;
+    height: auto;
+}
+
+.content-panel h3 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* 探索界面 */
+#current-location {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.location-info {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ffd700;
+    margin-bottom: 20px;
+}
+
+.location-info p {
+    color: #add8e6;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.available-locations h4 {
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.location-btn {
+    background: linear-gradient(45deg, #8e44ad, #9b59b6);
+    color: white;
+    border: 2px solid #6c3483;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.location-btn:hover {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    transform: translateY(-2px);
+}
+
+/* 战斗界面 */
+.battle-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.enemy-info {
+    background: rgba(139, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #dc143c;
+    text-align: center;
+}
+
+.enemy-info h4 {
+    color: #dc143c;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.enemy-hp-bar {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    border: 2px solid #dc143c;
+    position: relative;
+    margin: 15px 0;
+}
+
+.enemy-hp-bar .bar-fill {
+    background: linear-gradient(45deg, #dc143c, #8b0000);
+}
+
+.battle-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.battle-log {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #add8e6;
+}
+
+.battle-log div {
+    margin: 5px 0;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.2);
+}
+
+/* 背包界面 */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: visible;
+    max-height: none;
+    padding: 0 10px;
+}
+
+.inventory-slot {
+    width: 100%;
+    min-width: 70px;
+    max-width: 90px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #555;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 0 auto;
+}
+
+.inventory-slot:hover {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.inventory-slot.has-item {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.inventory-slot .item-icon {
+    font-size: 2em;
+}
+
+.inventory-slot .item-count {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-size: 0.7em;
+}
+
+.inventory-info {
+    color: #add8e6;
+    text-align: center;
+}
+
+/* 装备界面 */
+.equipment-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.equipment-slot {
+    text-align: center;
+}
+
+.equipment-slot label {
+    display: block;
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.slot-box {
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid #555;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    color: #888;
+    font-size: 0.9em;
+}
+
+.slot-box:hover {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.slot-box.equipped {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+}
+
+/* 技能界面 */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    min-height: 300px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.skill-item {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-item:hover {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.skill-item h4 {
+    color: #ffd700;
+    margin-bottom: 8px;
+}
+
+.skill-item p {
+    color: #add8e6;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.skill-level {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* 商店界面 */
+.shop-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #555;
+}
+
+.shop-tab {
+    background: transparent;
+    border: none;
+    color: #add8e6;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.shop-tab:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: #ffd700;
+}
+
+.shop-tab.active {
+    color: #ffd700;
+    border-bottom-color: #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.shop-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+.shop-content h4 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    flex-shrink: 0;
+}
+
+.shop-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    min-height: 300px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.shop-item {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-item:hover {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.shop-item-info {
+    flex: 1;
+}
+
+.shop-item-name {
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.shop-item-desc {
+    color: #add8e6;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.shop-item-stats {
+    color: #2ecc71;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+}
+
+.shop-item-price {
+    color: #f39c12;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.shop-buy-btn {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: white;
+    border: 2px solid #229954;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.shop-buy-btn:hover {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    transform: translateY(-2px);
+}
+
+.shop-buy-btn:disabled {
+    background: #555;
+    border-color: #555;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 技能按钮状态 */
+.skill-item.learned {
+    border-color: #2ecc71;
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.skill-item.available {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.skill-item.locked {
+    border-color: #555;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0.6;
+}
+
+.skill-learn-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: 2px solid #1f618d;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.skill-learn-btn:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db);
+    transform: translateY(-2px);
+}
+
+.skill-learn-btn:disabled {
+    background: #555;
+    border-color: #555;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.skill-cost {
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.skill-requirements {
+    color: #f39c12;
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+.skill-details {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid #444;
+}
+
+/* 消息日志 */
+.message-log {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    padding: 15px;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#log-content {
+    color: #add8e6;
+    font-size: 0.9em;
+    line-height: 1.4;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.message-log h3 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.log-message {
+    margin: 3px 0;
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.1);
+}
+
+.log-message.important {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.log-message.error {
+    color: #ff6b6b;
+}
+
+.log-message.success {
+    color: #2ecc71;
+}
+
+/* 模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    margin: 10% auto;
+    padding: 30px;
+    border: 3px solid #ffd700;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffd700;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    #main-game {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+    }
+    
+    .character-panel {
+        order: 2;
+        margin-top: 20px;
+    }
+    
+    .game-content {
+        order: 1;
+        min-height: 400px;
+    }
+    
+    .message-log {
+        order: 3;
+        height: 200px;
+        margin-top: 20px;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .battle-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .equipment-slots {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 8px;
+        padding: 0 5px;
+    }
+    
+    .inventory-slot {
+        min-width: 60px;
+        max-width: 80px;
+        height: 70px;
+    }
+    
+    .shop-items-grid {
+        grid-template-columns: 1fr;
+        max-height: 50vh;
+        min-height: 250px;
+    }
+    
+    .skills-list {
+        grid-template-columns: 1fr;
+        max-height: 50vh;
+        min-height: 250px;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ffed4e, #ffd700);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.btn-primary:active {
+    animation: pulse 0.6s;
+}
+
+/* 挂机状态样式 */
+.afk-status {
+    background: rgba(46, 204, 113, 0.1);
+    border: 2px solid #2ecc71;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    animation: pulse-green 2s infinite;
+}
+
+.afk-status h4 {
+    color: #2ecc71;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.afk-status p {
+    color: #add8e6;
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+/* 装备品质颜色 */
+.item-common { 
+    color: #ffffff; 
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+.item-uncommon { 
+    color: #1eff00; 
+    background: linear-gradient(45deg, rgba(30,255,0,0.2), rgba(30,255,0,0.1));
+}
+.item-rare { 
+    color: #0070dd; 
+    background: linear-gradient(45deg, rgba(0,112,221,0.3), rgba(0,112,221,0.15));
+}
+.item-epic { 
+    color: #a335ee; 
+    background: linear-gradient(45deg, rgba(163,53,238,0.4), rgba(163,53,238,0.2));
+}
+.item-legendary { 
+    color: #ff8000;
+    background: linear-gradient(45deg, rgba(255,128,0,0.5), rgba(255,128,0,0.25));
+}
+
+/* 背包中物品的品质颜色 */
+.inventory-slot.item-common {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+.inventory-slot.item-uncommon {
+    border-color: #1eff00;
+    box-shadow: 0 0 10px rgba(30,255,0,0.5);
+}
+.inventory-slot.item-rare {
+    border-color: #0070dd;
+    box-shadow: 0 0 10px rgba(0,112,221,0.6);
+}
+.inventory-slot.item-epic {
+    border-color: #a335ee;
+    box-shadow: 0 0 15px rgba(163,53,238,0.7);
+}
+.inventory-slot.item-legendary {
+    border-color: #ff8000;
+    box-shadow: 0 0 20px rgba(255,128,0,0.8);
+}

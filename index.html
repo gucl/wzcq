@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="文字传奇 - 经典网页RPG游戏，三职业角色，策略战斗，装备收集">
+    <meta name="keywords" content="网页游戏,RPG,文字游戏,传奇,角色扮演">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
+    <title>文字传奇 - 经典复古传奇游戏</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics (可选) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+    -->
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1>文字传奇</h1>
+            <div class="game-info">
+                <span id="current-time"></span>
+                <button id="save-btn" class="btn btn-save">保存游戏</button>
+            </div>
+        </header>
+
+        <!-- 角色创建界面 -->
+        <div id="character-creation" class="screen">
+            <h2>创建角色</h2>
+            <div class="creation-form">
+                <label for="char-name">角色名称：</label>
+                <input type="text" id="char-name" placeholder="请输入角色名称" maxlength="10">
+
+                <label for="char-class">选择职业：</label>
+                <select id="char-class">
+                    <option value="warrior">战士 - 高攻击高防御</option>
+                    <option value="mage">法师 - 高魔法攻击</option>
+                    <option value="archer">弓手 - 高敏捷远程攻击</option>
+                </select>
+
+                <div class="class-info">
+                    <div id="warrior-info" class="class-desc">
+                        <h4>战士</h4>
+                        <p>初始属性：攻击力 15，防御力 12，生命值 120，魔法值 30</p>
+                        <p>特色：近战之王，拥有强大的物理攻击和防御能力</p>
+                    </div>
+                    <div id="mage-info" class="class-desc" style="display:none;">
+                        <h4>法师</h4>
+                        <p>初始属性：攻击力 8，防御力 6，生命值 80，魔法值 150</p>
+                        <p>特色：魔法大师，拥有强大的魔法攻击和技能</p>
+                    </div>
+                    <div id="archer-info" class="class-desc" style="display:none;">
+                        <h4>弓手</h4>
+                        <p>初始属性：攻击力 12，防御力 8，生命值 100，魔法值 60</p>
+                        <p>特色：远程专家，拥有高敏捷和精准攻击</p>
+                    </div>
+                </div>
+
+                <button id="create-character-btn" class="btn btn-primary">创建角色</button>
+            </div>
+        </div>
+
+        <!-- 主游戏界面 -->
+        <div id="main-game" class="screen" style="display:none;">
+            <!-- 角色信息面板 -->
+            <div class="character-panel">
+                <div class="char-info">
+                    <h3 id="char-display-name">角色名称</h3>
+                    <div class="char-class">
+                        <span id="char-display-class">职业</span>
+                        <span id="char-level">等级 1</span>
+                    </div>
+                </div>
+
+                <div class="char-stats">
+                    <div class="stat-bars">
+                        <div class="stat-bar">
+                            <label>生命值</label>
+                            <div class="bar hp-bar">
+                                <div id="hp-fill" class="bar-fill"></div>
+                                <span id="hp-text">100/100</span>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <label>魔法值</label>
+                            <div class="bar mp-bar">
+                                <div id="mp-fill" class="bar-fill"></div>
+                                <span id="mp-text">50/50</span>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <label>经验值</label>
+                            <div class="bar exp-bar">
+                                <div id="exp-fill" class="bar-fill"></div>
+                                <span id="exp-text">0/100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-stats">
+                        <div>攻击力：<span id="attack-stat">0</span></div>
+                        <div>防御力：<span id="defense-stat">0</span></div>
+                        <div>敏捷：<span id="agility-stat">0</span></div>
+                        <div>金币：<span id="gold-amount">100</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 游戏主内容区 -->
+            <div class="game-content">
+                <!-- 导航菜单 -->
+                <nav class="game-nav">
+                    <button id="nav-explore" class="nav-btn active">探索</button>
+                    <button id="nav-battle" class="nav-btn">战斗</button>
+                    <button id="nav-inventory" class="nav-btn">背包</button>
+                    <button id="nav-equipment" class="nav-btn">装备</button>
+                    <button id="nav-skills" class="nav-btn">技能</button>
+                    <button id="nav-shop" class="nav-btn">商店</button>
+                </nav>
+
+                <!-- 探索界面 -->
+                <div id="explore-panel" class="content-panel">
+                    <h3>当前位置：<span id="current-location">新手村</span></h3>
+                    <div class="location-info">
+                        <p id="location-description">一个宁静的新手村庄，这里有友善的村民和基础的商店。适合新手冒险者开始他们的传奇之旅。</p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="hunt-monsters" class="btn btn-action">狩猎怪物</button>
+                        <button id="visit-shop" class="btn btn-action">访问商店</button>
+                        <button id="rest-inn" class="btn btn-action">客栈休息</button>
+                        <button id="explore-dungeon" class="btn btn-action">探索地牢</button>
+                        <button id="toggle-afk" class="btn btn-action">开始挂机</button>
+                    </div>
+
+                    <div class="available-locations">
+                        <h4>可前往的地点：</h4>
+                        <div id="location-list">
+                            <button class="location-btn" data-location="forest">幽暗森林</button>
+                            <button class="location-btn" data-location="cave">山洞</button>
+                            <button class="location-btn" data-location="desert">沙漠绿洲</button>
+                            <button class="location-btn" data-location="dungeon">古代遗迹</button>
+                        </div>
+                    </div>
+
+                    <!-- 挂机状态显示 -->
+                    <div id="afk-status" class="afk-status" style="display:none;">
+                        <h4>📺 挂机中...</h4>
+                        <p id="afk-timer">挂机时间：00:00:00</p>
+                        <p id="afk-progress">获得经验：0 | 获得金币：0</p>
+                    </div>
+                </div>
+
+                <!-- 战斗界面 -->
+                <div id="battle-panel" class="content-panel" style="display:none;">
+                    <div class="battle-scene">
+                        <div class="enemy-info">
+                            <h4 id="enemy-name">怪物名称</h4>
+                            <div class="enemy-hp-bar">
+                                <div id="enemy-hp-fill" class="bar-fill"></div>
+                                <span id="enemy-hp-text">HP: 0/0</span>
+                            </div>
+                            <div id="enemy-description">怪物描述</div>
+                        </div>
+
+                        <div class="battle-actions">
+                            <button id="attack-btn" class="btn btn-battle">普通攻击</button>
+                            <button id="skill-attack-btn" class="btn btn-battle">技能攻击</button>
+                            <button id="use-item-btn" class="btn btn-battle">使用物品</button>
+                            <button id="flee-btn" class="btn btn-battle">逃跑</button>
+                        </div>
+
+                        <div id="battle-log" class="battle-log"></div>
+                    </div>
+                </div>
+
+                <!-- 背包界面 -->
+                <div id="inventory-panel" class="content-panel" style="display:none;">
+                    <h3>背包</h3>
+                    <div class="inventory-grid" id="inventory-grid">
+                        <!-- 背包格子将通过JavaScript动态生成 -->
+                    </div>
+                    <div class="inventory-info">
+                        <p>背包空间：<span id="inventory-used">0</span>/<span id="inventory-max">20</span></p>
+                    </div>
+                </div>
+
+                <!-- 装备界面 -->
+                <div id="equipment-panel" class="content-panel" style="display:none;">
+                    <h3>装备</h3>
+                    <div class="equipment-slots">
+                        <div class="equipment-slot" data-slot="weapon">
+                            <label>武器</label>
+                            <div id="weapon-slot" class="slot-box">空</div>
+                        </div>
+                        <div class="equipment-slot" data-slot="armor">
+                            <label>防具</label>
+                            <div id="armor-slot" class="slot-box">空</div>
+                        </div>
+                        <div class="equipment-slot" data-slot="accessory">
+                            <label>饰品</label>
+                            <div id="accessory-slot" class="slot-box">空</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能界面 -->
+                <div id="skills-panel" class="content-panel" style="display:none;">
+                    <h3>技能</h3>
+                    <div id="skills-list" class="skills-list">
+                        <!-- 技能列表将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 商店界面 -->
+                <div id="shop-panel" class="content-panel" style="display:none;">
+                    <h3>商店</h3>
+                    <div class="shop-tabs">
+                        <button id="shop-equipment-tab" class="shop-tab active">装备</button>
+                        <button id="shop-items-tab" class="shop-tab">物品</button>
+                    </div>
+
+                    <div id="shop-equipment" class="shop-content">
+                        <h4>装备商店</h4>
+                        <div id="equipment-shop-list" class="shop-items-grid">
+                            <!-- 装备商品将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+
+                    <div id="shop-items" class="shop-content" style="display:none;">
+                        <h4>物品商店</h4>
+                        <div id="items-shop-list" class="shop-items-grid">
+                            <!-- 消耗品将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 消息日志 -->
+            <div id="message-log" class="message-log">
+                <h3>游戏日志</h3>
+                <div id="log-content"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>

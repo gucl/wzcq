@@ -1,0 +1,25 @@
+{
+    "name": "wzcq-legend-game",
+    "version": "1.1.0",
+    "description": "文字传奇 - 经典网页RPG游戏",
+    "main": "index.html",
+    "scripts": {
+        "start": "python -m http.server 8080",
+        "build": "echo 'Static website, no build needed'",
+        "deploy": "gh-pages -d ."
+    },
+    "keywords": [
+        "game",
+        "rpg",
+        "web-game",
+        "javascript",
+        "html5"
+    ],
+    "author": "文字传奇开发团队",
+    "license": "MIT",
+    "homepage": "https://your-username.github.io/wzcq/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/your-username/wzcq.git"
+    }
+}
